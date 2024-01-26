@@ -7,26 +7,22 @@ import { useState } from "react";
 function App() {
   const [bill, setBill] = useState(0);
   const [parc, setParc] = useState(0);
-  const [sum, setSum] = useState(0);
+  const [parc1, setParc1] = useState(0);
 
-  function handleBill() {
-    setSum = bill + parc;
-  }
+  const sum = bill * [(parc + parc1) / 2 / 100];
 
   return (
     <div>
-      <Bill bill={bill} onBill={setBill} handleBill={handleBill} />
+      <Bill bill={bill} onBill={setBill} />
 
-      <Service parc={parc} onParc={setParc} handleBill={handleBill} />
+      <Service parc={parc} onParc={setParc}>
+        how did u get the bill?
+      </Service>
+      <Service parc={parc1} onParc={setParc1}>
+        how did your friend like the Service?
+      </Service>
 
-      <Result
-        bill={bill}
-        onBill={setBill}
-        parc={parc}
-        handleBill={handleBill}
-        sum={sum}
-        onSum={setSum}
-      />
+      <Result bill={bill} parc={parc} sum={sum} />
     </div>
   );
 }
